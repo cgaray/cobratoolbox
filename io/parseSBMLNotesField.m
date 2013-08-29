@@ -287,6 +287,7 @@ function [genes, rule, subSystem, grRule, formula, confidenceScore, ...
             charge, 'UniformOutput', 0);
         charge(cellfun('isempty',charge)) = {{''}}; % pad blanks
         charge = [charge{:}]'; % unnest cell
+        charge = cell2mat(charge) %convert charge to a vector
         
         comment = notesField;
     else
