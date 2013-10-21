@@ -1,6 +1,6 @@
 function sbmlModel = convertCobraToSBML(model,sbmlLevel,sbmlVersion,compSymbolList,compNameList,debug_function)
 %convertCobraToSBML converts a cobra structure to an sbml
-%structure using the structures provided in the SBML toolbox 3.1.0
+%structure using the structures provided in the SBML toolbox 4.1.0
 %
 % sbmlModel = convertCobraToSBML(model,sbmlLevel,sbmlVersion,compSymbolList,compNameList)
 %
@@ -239,6 +239,7 @@ if debug_function
 end
 %% Format For SBML
 function str = formatForSBMLID(str)
+str = strrep(str,':','_COLON_');
 str = strrep(str,'-','_DASH_');
 str = strrep(str,'/','_FSLASH_');
 str = strrep(str,'\','_BSLASH_');
