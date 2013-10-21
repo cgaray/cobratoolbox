@@ -37,30 +37,30 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
     %% References 
     %
     % Hucka, M., A. Finney, H. M. Sauro, H. Bolouri, J.C. Doyle, H. Kitano,
-    % A. P. Arkin, et al. “The Systems Biology Markup Language (SBML): a
+    % A. P. Arkin, et al. ï¿½The Systems Biology Markup Language (SBML): a
     % Medium for Representation and Exchange of Biochemical Network
-    % Models.” Bioinformatics 19, no. 4 (March 2003): 524–531.
+    % Models.ï¿½ Bioinformatics 19, no. 4 (March 2003): 524ï¿½531.
     % doi:10.1093/bioinformatics/btg015.
     %
-    % Keating, S. M, B. J Bornstein, A. Finney, and M. Hucka. “SBMLToolbox:
-    % An SBML Toolbox for MATLAB Users.” Bioinformatics 22, no. 10 (2006):
+    % Keating, S. M, B. J Bornstein, A. Finney, and M. Hucka. ï¿½SBMLToolbox:
+    % An SBML Toolbox for MATLAB Users.ï¿½ Bioinformatics 22, no. 10 (2006):
     % 1275.
     %
     % Becker, Scott A, Adam M Feist, Monica L Mo, Gregory Hannum, Bernhard
-    % Ø Palsson, and Markus J Herrgard. “Quantitative Prediction of
-    % Cellular Metabolism with Constraint-based Models: The COBRA Toolbox.”
-    % Nature Protocols 2, no. 3 (March 2007): 727–738.
+    % ï¿½ Palsson, and Markus J Herrgard. ï¿½Quantitative Prediction of
+    % Cellular Metabolism with Constraint-based Models: The COBRA Toolbox.ï¿½
+    % Nature Protocols 2, no. 3 (March 2007): 727ï¿½738.
     % doi:10.1038/nprot.2007.99.
     %
-    % Thiele, I., and B. O. Palsson. “A Protocol for Generating a
-    % High-quality Genome-scale Metabolic Reconstruction.” Nature Protocols
-    % 5, no. 1 (January 2010): 93–121. doi:10.1038/nprot.2009.203.
+    % Thiele, I., and B. O. Palsson. ï¿½A Protocol for Generating a
+    % High-quality Genome-scale Metabolic Reconstruction.ï¿½ Nature Protocols
+    % 5, no. 1 (January 2010): 93ï¿½121. doi:10.1038/nprot.2009.203.
     %
     % Schellenberger, Jan, Richard Que, Ronan M T Fleming, Ines Thiele,
     % Jeffrey D Orth, Adam M Feist, Daniel C Zielinski, et al.
-    % “Quantitative Prediction of Cellular Metabolism with Constraint-based
-    % Models: The COBRA Toolbox V2.0.” Nature Protocols 6, no. 9 (August
-    % 2011): 1290–1307. doi:10.1038/nprot.2011.308.
+    % ï¿½Quantitative Prediction of Cellular Metabolism with Constraint-based
+    % Models: The COBRA Toolbox V2.0.ï¿½ Nature Protocols 6, no. 9 (August
+    % 2011): 1290ï¿½1307. doi:10.1038/nprot.2011.308.
     
     %% TODO 
     % add case switch for SBML fbc package support
@@ -622,6 +622,7 @@ end
 
 %% Cleanup Formatting
 function str = cleanUpFormatting(str)
+    str = strrep(str,'_COLON_',':');
     str = strrep(str,'-DASH-','-');
     str = strrep(str,'_DASH_','-');
     str = strrep(str,'_FSLASH_','/');
