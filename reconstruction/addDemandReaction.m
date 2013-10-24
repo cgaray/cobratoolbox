@@ -7,6 +7,7 @@ function [model,rxnNames] = addDemandReaction(model,metaboliteNameList, rev)
 % INPUTS
 % model                 COBRA model structure
 % metaboliteNameList    List of metabolite names (cell array)
+% rev                   Should the reaction be reversible?
 %
 % OUTPUTS
 % model                 COBRA model structure with added demand reactions
@@ -29,5 +30,9 @@ for i = 1:length(metaboliteNameList)
     rxnName = ['DM_' metaboliteNameList{i}];
     rxnNames{i}=rxnName;
     metaboliteList = {metaboliteNameList{i}};
-    model = addReaction(model,rxnName,metaboliteList,-1,false,0,1000,0,'Demand');
+    if ~rev
+        model = addReaction(model,rxnName,metaboliteList,-1,false,0,1000,0,'Demand');
+    else
+        model = addReaction(model,rxnName,metaboliteList,-1,true,-1000,1000,0,'Demand');
+    end
 end

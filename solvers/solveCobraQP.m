@@ -389,6 +389,8 @@ switch solver
             QPproblem.csense = QPproblem.csense(:);
         end
 	
+        
+        
         if QPproblem.osense == -1
             QPproblem.osense = 'max';
         else

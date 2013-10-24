@@ -103,6 +103,7 @@ the_compartments = {};
 for (i=1:size(model.mets, 1))
     tmp_notes='';
     tmp_met = tmp_met_struct{i}.met;
+    
     %Change id to correspond to SBML id specifications
     tmp_met = strcat('M_', (tmp_met), '_', tmp_met_struct{i}.comp);
     model.mets{ i } = formatForSBMLID(tmp_met);

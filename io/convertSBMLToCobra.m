@@ -134,11 +134,11 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
         rules = cell(nRxns,1);
         genes = cell(nRxns,1);
         allGenes = {};
-        h = waitbar(0,'Reading SBML file ...');
+        %h = waitbar(0,'Reading SBML file ...');
         hasNotesField = false;
         for i = 1:nRxns
             if mod(i,10) == 0
-                waitbar(i/nRxns,h);
+                %waitbar(i/nRxns,h);
             end
             % Read the gpra from the notes field
             notesField = modelSBML.reaction(i).notes;
@@ -215,7 +215,7 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
         end
         %close the waitbar if this is matlab
         if (regexp(version, 'R20'))
-            close(h);
+            %close(h);
         end
         allGenes = unique(allGenes);
 
@@ -223,7 +223,7 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
         if (hasNotesField)
 
             rxnGeneMat = sparse(nRxns,length(allGenes));
-            h = waitbar(0,'Constructing GPR mapping ...');
+            %h = waitbar(0,'Constructing GPR mapping ...');
             for i = 1:nRxns
                 if mod(i,10) == 0
                     waitbar(i/nRxns,h);
@@ -244,7 +244,7 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
             end
             %close the waitbar if this is matlab
             if (regexp(version, 'R20'))
-                close(h);
+                %close(h);
             end
 
         end
@@ -259,11 +259,11 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
             compartmentList{i} = modelSBML.compartment(i).id;
         end
 
-        h = waitbar(0,'Constructing metabolite lists ...');
+        %h = waitbar(0,'Constructing metabolite lists ...');
         hasAnnotationField = 0;
         for i = 1:nMets
             if mod(i,10) == 0
-                waitbar(i/nMets,h);
+                %waitbar(i/nMets,h);
             end
             % Parse metabolite id's
             % Get rid of the M_ in the beginning of metabolite id's
@@ -456,7 +456,7 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
         products = {modelSBML.reaction.product}';
 
         % This is a bottleneck. Is there a better way to do this?
-        h = waitbar(0,'Constructing S matrix: reactants ...');
+        %h = waitbar(0,'Constructing S matrix: reactants ...');
         
         for reactants_index = 1:length(reactants)
             [~,~,IB] = intersect( ...
@@ -470,15 +470,15 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
             end
             
             if mod(reactants_index,10) == 0
-                    waitbar(reactants_index/length(reactants),h);
+                    %waitbar(reactants_index/length(reactants),h);
             end
         end
         
         % close the waitbar
-        close(h);
+        %close(h);
 
         % This is a bottleneck. Is there a better way to do this?
-        h = waitbar(0,'Constructing S matrix: products ...');
+        %h = waitbar(0,'Constructing S matrix: products ...');
         for products_index = 1:length(products) 
             [~,~,IB] = intersect({products{products_index}.species}', ...
                 mets, 'stable');
@@ -491,12 +491,12 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
             end
             
             if mod(products_index,10) == 0
-                    waitbar(products_index/length(products),h);
+                    %waitbar(products_index/length(products),h);
             end
         end
         
         % close the waitbar
-        close(h);
+        %close(h);
 
         S = sparse(S);
 

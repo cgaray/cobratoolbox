@@ -158,7 +158,7 @@ else
     getCobraSolverParams('LP',optParamNames(1:6));
 end
 
-if norm(minNorm,inf)~=0 && ~any(strcmp(solver,{'cplex_direct','cplex'}))
+if norm(minNorm,inf)~=0 && ~any(strcmp(solver,{'cplex_direct','cplex', 'gurobi5'}))
   error('minNorm only works for LP solver ''cplex_direct'' from this interface, use optimizeCbModel for other solvers.')
 end
 
