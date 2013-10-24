@@ -51,10 +51,10 @@ delRxns = cell(nDelGenes,1);
 if (verbFlag)  
     fprintf('%4s\t%4s\t%10s\t%9s\t%9s\n','No','Perc','Name','Growth rate','Rel. GR');
 end
-h = waitbar(0,'Single gene deletion analysis in progress ...');
+%h = waitbar(0,'Single gene deletion analysis in progress ...');
 for i = 1:nDelGenes
     if mod(i,10) == 0
-        waitbar(i/nDelGenes,h);
+        %waitbar(i/nDelGenes,h);
     end
     [modelDel,hasEffect(i),constrRxnNames] = deleteModelGenes(model,geneList{i});
     delRxns{i} = constrRxnNames;
@@ -79,7 +79,7 @@ for i = 1:nDelGenes
     end
 end
 if ( regexp( version, 'R20') )
-        close(h);
+        %close(h);
 end
 
 grRatio = grRateKO/grRateWT;

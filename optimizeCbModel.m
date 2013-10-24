@@ -264,12 +264,13 @@ if (solution.stat == 1)
     %solution found.
     FBAsolution.x = solution.full(1:nRxns);
     
-    if isfield(solution,'dual')
-        if ~isempty(solution.dual)
-            %dont include dual variable to additional constraint
-            solution.dual=solution.dual(1:end-1,1);
-        end
-    end
+    % Why is this here?? CDG
+%     if isfield(solution,'dual')
+%         if ~isempty(solution.dual)
+%             %dont include dual variable to additional constraint
+%             solution.dual=solution.dual(1:end-1,1);
+%         end
+%     end
     
     %this line IS necessary.
     FBAsolution.f = model.c'*solution.full(1:nRxns); %objective from original optimization problem.

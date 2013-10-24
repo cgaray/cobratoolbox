@@ -374,12 +374,12 @@ nRxns = length(model.rxns);
 
 % Construct gene to rxn mapping
 rxnGeneMat = sparse(nRxns,length(allGenes));
-h = waitbar(0,'Constructing GPR mapping ...');
+%h = waitbar(0,'Constructing GPR mapping ...');
 for i = 1:nRxns
     rxnID = find(ismember(rxns,model.rxns{i}));
     if (~isempty(rxnID))
         if mod(i,10) == 0
-            waitbar(i/nRxns,h);
+            %waitbar(i/nRxns,h);
         end
         [tmp,geneInd] = ismember(rxnInfo(rxnID).genes,allGenes);
         rxnGeneMat(i,geneInd) = 1;
@@ -401,7 +401,7 @@ for i = 1:nRxns
     end
 end
 if ( regexp( version, 'R20') )
-        close(h);
+        %close(h);
 end
 
 %% Read SimPheny cmpd output file
@@ -409,10 +409,10 @@ end
 
 baseMets = parseMetNames(model.mets);
 nMets = length(model.mets);
-h = waitbar(0,'Constructing metabolite lists ...');
+%h = waitbar(0,'Constructing metabolite lists ...');
 for i = 1:nMets
     if mod(i,10) == 0
-        waitbar(i/nMets,h);
+        %waitbar(i/nMets,h);
     end
     metID = find(ismember(mets,baseMets{i}));
     if (~isempty(metID))
@@ -422,7 +422,7 @@ for i = 1:nMets
     end
 end
 if ( regexp( version, 'R20') )
-        close(h);
+        %close(h);
 end
 
 model.rxnGeneMat = rxnGeneMat;
