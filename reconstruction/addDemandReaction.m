@@ -1,4 +1,4 @@
-function [model,rxnNames] = addDemandReaction(model,metaboliteNameList)
+function [model,rxnNames] = addDemandReaction(model,metaboliteNameList, rev)
 % addDemandReaction adds demand reactions for a set of metabolites
 % The reaction names for the demand reactions will be DM_[metaboliteName]
 %
@@ -14,6 +14,10 @@ function [model,rxnNames] = addDemandReaction(model,metaboliteNameList)
 %
 % Markus Herrgard 5/8/07
 % Ines Thiele 03/09 - Corrected reaction coefficient for demand reaction
+
+if nargin < 3
+    rev = false;
+end
 
 if (~iscell(metaboliteNameList))
     tmp = metaboliteNameList;
