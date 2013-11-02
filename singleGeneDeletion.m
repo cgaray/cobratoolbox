@@ -81,5 +81,4 @@ end
 if ( regexp( version, 'R20') )
         %close(h);
 end
-
 grRatio = grRateKO/grRateWT;

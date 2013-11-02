@@ -579,7 +579,11 @@ function model = convertSBMLToCobra(modelSBML, defaultBound, ...
         model.mets = mets;
         model.metNames = metNames;
         %model.metConfidenceScores = ; % future?
-        model.metCharge = cell2mat(chargeList);
+        if ~isnumeric(chargeList)
+            model.metCharge = cell2mat(chargeList);
+        else
+            model.metCharge = chargeList;
+        end
         model.metCompartment = compartments;
         model.metFormulas = metFormulas;
         model.metChEBIID = metCHEBI;
